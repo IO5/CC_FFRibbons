@@ -54,10 +54,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RevokeRibbon.cs" />
     <Compile Include="AwardRibbon.cs" />
+    <Compile Include="RevokeRibbonFactory.cs" />
     <Compile Include="AwardRibbonFactory.cs" />
     <Compile Include="FinalFrontierAdapter.cs" />
-    <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

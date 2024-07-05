@@ -5,22 +5,21 @@ using System.Linq;
 
 namespace CCFFPlugin
 {
-    using static ContractConfigurator.Behaviour.ChangeKerbalType;
     using Kerbal = ContractConfigurator.Kerbal;
-    public class AwardRibbon : TriggeredBehaviour
+    public class RevokeRibbon : TriggeredBehaviour
     {
         protected List<Kerbal> kerbals = new List<Kerbal>();
         protected List<string> ribbons = new List<string>();
 
-        static AwardRibbon()
+        static RevokeRibbon()
         {
         }
 
-        public AwardRibbon()
+        public RevokeRibbon()
         {
         }
 
-        public AwardRibbon(List<Kerbal> kerbals, List<string> ribbons, TriggeredBehaviour.State onState, List<string> parameter)
+        public RevokeRibbon(List<Kerbal> kerbals, List<string> ribbons, TriggeredBehaviour.State onState, List<string> parameter)
             : base(onState, parameter)
         {
             this.kerbals = kerbals;
@@ -29,14 +28,14 @@ namespace CCFFPlugin
 
         protected override void TriggerAction()
         {
-            var ffAdapter = AwardRibbonFactory.getFFAdapter();
+            var ffAdapter = RevokeRibbonFactory.getFFAdapter();
             if (ffAdapter == null || !ffAdapter.IsInstalled())
                 return;
 
-            var pcms = kerbals.Select(k => k.pcm).ToArray();
             foreach (var ribbon in ribbons)
             {
-                ffAdapter.AwardRibbonToKerbals(ribbon, pcms);
+                foreach (var pcm in kerbals.Select(k => k.pcm))
+                    ffAdapter.RevokeRibbonFromKerbal(ribbon, pcm);
             }
         }
 
@@ -53,6 +52,7 @@ namespace CCFFPlugin
                 configNode.AddValue("ribbon", ribbon);
             }
         }
+
         protected override void OnLoad(ConfigNode configNode)
         {
             base.OnLoad(configNode);
