@@ -93,7 +93,7 @@ namespace MyPlugin
          methodAwardRibbonToKerbalsByCode = GetMethod(type, "AwardRibbonToKerbals", new Type[] { typeof(String), typeof(ProtoCrewMember[]) });
          methodAwardRibbonToKerbalsByRibbon = GetMethod(type, "AwardRibbonToKerbals", new Type[] { typeof(object), typeof(ProtoCrewMember[]) });
          // revoke
-         methodRevokeRibbonFromKerbalByCode = GetMethod(type, "RevokeRibbonFromKerbal", new Type[] { typeof(String), typeof(ProtoCrewMember) });
+         methodRevokeRibbonFromKerbalByCode = GetMethod(type, "RevokeRibbonfromKerbal", new Type[] { typeof(String), typeof(ProtoCrewMember) });
          methodRevokeRibbonFromKerbalByRibbon = GetMethod(type, "RevokeRibbonFromKerbal", new Type[] { typeof(object), typeof(ProtoCrewMember) });
          // misc
          methodIsRibbonAwardedToKerbalByCode = GetMethod(type, "IsRibbonAwardedToKerbal", new Type[] { typeof(String), typeof(ProtoCrewMember) });
